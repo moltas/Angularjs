@@ -1,0 +1,19 @@
+body {
+  padding-top: 80px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.starter-template h1 {
+  font-size: 63px;
+}
+
+.contact-form {
+  margin-bottom: 20px;
+}
+
+.space {
+  float: right;
+}

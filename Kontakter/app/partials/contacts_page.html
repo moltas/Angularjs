@@ -1,0 +1,44 @@
+<form ng-submit="saveContact()" class="form-inline contact-form" role="form">
+  <div class="form-group">
+      <label class="sr-only" for="contactName">Namn</label>
+      <input ng-model="newContact.name" type="text" class="form-control" id="contactName" placeholder="Namn">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="phoneNumber">Telefonnummer</label>
+    <input ng-model="newContact.phone"type="text" class="form-control" id="phoneNumber" placeholder="Telefonnummer">
+  </div>
+    <div class="form-group">
+    <label class="sr-only" for="adress">Address</label>
+    <input ng-model="newContact.adress" type="text" class="form-control" id="adress" placeholder="Address">
+  </div>
+  <button type="submit" class="btn btn-primary">Lägg till</button>
+</form>
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Namn</th>
+			<th>Telefonnummer</th>
+			<th>Address</th>
+			<th>Alternativ</th>	
+		</tr>	
+	</thead>
+	<!-- iterates over all the contacts from the contacts array -->
+	<tr ng-repeat="contact in contacts">
+		<td>
+			<div><strong>{{contact.name}}</strong></div>
+		</td>
+		<td>
+			<div>{{contact.phone}}</div>
+		</td>
+		<td>
+			<div>{{contact.adress}}</div>
+		</td>
+		<td>
+			<button ng-click="sendTextMessage(contact.phone)" type="submit" class="btn btn-success">SMS</button>
+			<button ng-click="deleteContact(contact)" type="submit" class="btn btn-danger">Remove</button>				
+		</td>	
+	</tr>
+</table>
+
