@@ -18,6 +18,14 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when("/contacts_page", {
   	templateUrl: "partials/contacts_page.html",
   	controller: "ContactController"	
-  });		
+  });
+  $routeProvider.when("/register", {
+    templateUrl: "partials/register.html",
+    controller: "AuthController"  
+  });
+  $routeProvider.when("/login", {
+    templateUrl: "partials/login.html",
+    controller: "AuthController"
+  })		
   $routeProvider.otherwise({redirectTo: "/" });
 }]);

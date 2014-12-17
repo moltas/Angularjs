@@ -2,33 +2,47 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
-	.controller('LandingPageController', [function() {
+angular.module("myApp.controllers", [])
+	.controller("LandingPageController", [function() {
 
-	}])
-	.controller('ContactController', ['$scope' , '$firebase',function($scope, $firebase) {
-		// Creates a connection between the app and firebase
-		var contactsRef = new Firebase('https://kontakter.firebaseio.com/');
+	}])			//The list of dependencies for this controller needs
+	.controller("ContactController", ["$scope", "contactService", "authService", function($scope, contactService, authService){
 
-		$scope.contacts = $firebase(contactsRef);
+		// bind users contacts to scope
+		authService.getCurrentUser().then(function(user){
+			if (user){		//Sets the value of contacts to the userId value
+				$scope.contacts = contactService.getContactsByUserId(user.id);
+			}
+		})
 
-		$scope.newContact = {name: "", phone: "", adress: ""};
+		$scope.newContact = {name: "", phone: "", address: ""};
 
 		$scope.saveContact = function() {
-			//adds contact data to firebase
-			$scope.contacts.$add($scope.newContact);
-			//resets the values in the textfields	
-			$scope.newContact = {name: "", phone: "", adress: ""};
+			contactService.saveContact($scope.newContact, $scope.currentUser.id);
+			$scope.newContact = {name: "", phone: "", address: ""};	
 		};
 
-		$scope.deleteContact = function(item){
-			console.log(item.$id);	
+		$scope.deleteContact = function(id){
+			$scope.contacts.$remove(id);
 		};
 
-		//function to send a text message to contact
-		$scope.sendTextMessage = function(phoneNumber) {
-			var textMessageRef = new Firebase('https://kontakter.firebaseio.com/textMessages');
-			var textMessage = $firebase(textMessageRef);
-			textMessage.$add({phoneNumber: phoneNumber});
+	}])
+	.controller("AuthController", ["$scope", "authService", function($scope, authService){
+		
+		// Object bound to inputs on the register and login pages
+		$scope.user = {email: "", password: ""};
+
+		//method to register a new user using the authservice
+		$scope.register = function(){     
+			authService.register($scope.user);
+		};	
+		//method that logins in the user using the authService
+		$scope.login = function(){
+			authService.login($scope.user);	
+		};
+
+		//method to log out a user using the authService
+		$scope.logout = function(){
+			authService.logout();	
 		}
 	}]);
