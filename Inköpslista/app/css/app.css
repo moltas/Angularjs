@@ -1,0 +1,223 @@
+
+/*
+============================================================================ 
+  General
+============================================================================
+*/
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; 
+}
+
+html {
+  font-size: 100%; /* ~16px */
+}
+
+body {
+  background: #3FC380;
+  margin-top: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+}
+
+.container {}
+
+h1 {
+  margin-bottom: 60px;
+  text-align: center;
+  color: #fff;
+  font-family: 'Sigmar One', cursive;
+  font-size: 4em;
+}
+
+h2 { color: white; }
+
+
+ul { list-style: none; }
+
+.lefty { float: left; }
+.righty { float: right; }
+
+
+/* will be active when checkbox is selected */
+.active {
+  text-decoration: line-through;
+  color: #999999;
+}
+
+.list-wrapper {
+  width: 50%;
+  margin: 0 auto;
+
+}
+
+/*
+============================================================================ 
+  navbar
+============================================================================
+*/
+
+.navbar-inverse {
+  background: transparent;
+  border: none;
+}
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+}
+
+
+/*
+============================================================================ 
+  Create Form
+============================================================================
+*/
+
+.add-item-form {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+
+}
+
+.itemName {
+  font-size: 1.2em;
+
+}
+
+#newItemName {
+  height: 50px;
+}
+
+.btn-success {
+  background: #1E824C;
+  border-color: #1E824C;
+}
+
+/*
+============================================================================ 
+  List
+============================================================================
+*/
+
+#list {
+  margin-bottom: 20px;
+  margin: 0 2%;
+}
+
+#list li {
+  font-size: 20px;
+
+  background: #fff;
+  color: #000;
+  height: 50px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+
+  position: relative;
+
+}
+
+button.close {
+  padding: 14px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+button.close:hover {
+  color: red;
+}
+
+.completed {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+}
+
+
+/*
+============================================================================ 
+  Sign in/register page
+============================================================================
+*/
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+/*
+============================================================================ 
+  Media queries
+============================================================================
+*/
+
+@media screen and (max-width: 1000px){
+
+  .container {
+    width: 100%;
+  }
+
+  .list-wrapper{
+    width: 70%;
+  }
+
+}
+
+/*mobile*/
+@media screen and (max-width: 500px){
+  
+  .list-wrapper {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .navbar-brand {
+    display: none;
+  }
+
+
+  #newItemName {
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,24 @@
+<!-- this is the page that shows the list -->
+<div class="list-wrapper">  
+	<h1>Inköpslista</h1>
+	<form class="create-form add-item-form clearfix" ng-submit="addItem()">
+		<div class="form-group">
+			<input type="text" class="form-control" id="newItemName" ng-model="newItem.name" placeholder="Vad behöver handlas?">
+		</div>
+		<button type="submit" class="btn btn-success righty btn-lg">Lägg till vara</button>
+	</form>
+
+	<div id="list">
+		<button type="submit" ng-click="selectAll()" class="btn btn-warning">Markera alla</button>
+		<button class="btn btn-danger rm-select" type="button" ng-click="deleteSelected()">&times;</button> 
+		<ul class="nav nav-sidebar">
+             	
+			<li ng-repeat="item in items">
+				<button type="submit" class="close" ng-click="deleteItem(item)">&times;</button>
+				<input type="checkbox" class="completed" class="lefty" ng-model="item.selected" ng-change="items.$save(item.$id)"><label for="thing"></label>
+				<span class="itemName" ng-class="{active: item.selected==true}">{{item.name}}</span>
+			</li>
+
+		</ul>
+	</div> 
+</div>
