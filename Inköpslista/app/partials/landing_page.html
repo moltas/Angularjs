@@ -9,8 +9,8 @@
 	</form>
 
 	<div id="list">
-		<button type="submit" ng-click="selectAll()" class="btn btn-warning">Markera alla</button>
-		<button class="btn btn-danger rm-select" type="button" ng-click="deleteSelected()">&times;</button> 
+		<button type="submit" ng-click="selectAll()" class="btn btn-warning" ng-hide="hideSelect()">Markera alla</button>
+		<button class="btn btn-danger rm-select" type="button" ng-click="deleteSelected()" ng-hide="hideSelect()">&times;</button> 
 		<ul class="nav nav-sidebar">
              	
 			<li ng-repeat="item in items">

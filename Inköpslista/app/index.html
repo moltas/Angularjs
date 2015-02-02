@@ -1,5 +1,6 @@
 <!--
   Made by: Tobias Johansson, T_johansson92@hotmail.com
+  github.com/moltas
   tobiasjohansson.website
   @tobblas on Twitter
 
@@ -11,8 +12,8 @@
   <title>Din Inköpslista Online</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <!-- fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
   <!-- stylesheets -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -27,15 +28,15 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="#">Inköpslista</a>
       </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
+      <div id="navbar">
+        <ul class="nav navbar-nav navbar-right menu">
+          <li class="login">
             <a href="#/login" ng-hide="currentUser">Logga in</a> <!-- Hidden based on currentUser -->
           </li>
-          <li>
+          <li class="register">
           <a href="#/register" ng-hide="currentUser">Registrera dig</a> <!-- Hidden based on currentUser -->
           </li>
-          <li>
+          <li class="logout">
             <a href="" ng-click="logout()" ng-show="currentUser">Logga ut</a> <!-- Hidden based on currentUser -->
           </li>  
         </ul>

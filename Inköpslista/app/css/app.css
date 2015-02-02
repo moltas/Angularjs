@@ -200,6 +200,45 @@ button.close:hover {
 
 }
 
+@media screen and (max-width: 900px){
+
+  .navbar-header{
+    display: none;
+  }
+
+  .menu { 
+    display: block; /*the nav menu is set to block to cover whole width*/
+    margin: 0;
+  }
+
+  .menu > li {
+    display: inline-block; /*changed from block to inline just tp prevent bootstrap properties*/
+  }
+
+  .navbar-fixed-top {
+    position: absolute;
+    top: 0;
+  }
+
+  .navbar-rigth {
+    float: none;
+  }
+
+  .register {
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+  }
+
+  .login {
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+  }
+
+
+}
+
 /*mobile*/
 @media screen and (max-width: 500px){
   
@@ -215,9 +254,13 @@ button.close:hover {
     display: none;
   }
 
-
   #newItemName {
     width: 100%;
   }
+
+  .menu {
+    font-size: 1.2em;  
+  }
+
 
 }

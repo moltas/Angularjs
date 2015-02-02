@@ -69,6 +69,14 @@ angular.module("myApp.services", [])
 					}
 				});
 			},
+			hideSelect: function(collection){
+				if(collection.length === 0){
+					return true;
+				}else{
+					return false;
+				}
+			},
+			//returns the items from firebase and returns them as array
 			getItemById: function(userId) {
 				return $firebase(users.child(userId).child("items")).$asArray();
 			}
@@ -98,7 +106,7 @@ angular.module("myApp.services", [])
 						console.log("Login failed", error);
 					} else {
 						$location.path("/landing_page");
-						console.log("Login successful", data);
+						if(!$rootScope.$$phase) $rootScope.$apply(); //a fix I found that stopped me from havign to double click to go to the landing page
 					}
 				});
 			},
@@ -106,11 +114,7 @@ angular.module("myApp.services", [])
 				auth.unauth(); //logs out the user
 				//redirect user to landing page
 				$location.path("/landing_page");
-			},
-			getCurrentUser: function(){
-				return auth.$getAuth();
 			}
-
 		};
 
 		//checks if the user is authenticated, and sets currentUser based on that

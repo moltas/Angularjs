@@ -3,13 +3,13 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [
-	"firebase"
-])
+		"firebase"
+	])
+	//the main controller that handles items
+	.controller("MainController", ["$scope", "$rootScope", "itemService", function($scope, $rootScope, itemService) {
 
-.controller("MainController", ["$scope", "$rootScope", "itemService", function($scope, $rootScope, itemService) {
 
-
-		$scope.newItem = { 
+		$scope.newItem = {
 			name: "",
 			selected: false
 		};
@@ -23,11 +23,12 @@ angular.module('myApp.controllers', [
 		// function emailFormat(email) {
 		// 	return email.replace(/\./g, 'dot'); //replaces the "." in the email with the word "dot"
 		// };
-
 		// var ekey = emailFormat(emailId);
 
-		if($rootScope.currentUser){ //if currentUser is true, $scope.items will be binded to location of users items
+		if ($rootScope.currentUser) { //if currentUser is true, $scope.items will be binded to location of users items
 			$scope.items = itemService.getItemById($rootScope.currentUser); //gets items from current user
+		} else {
+			$scope.items = itemService.getItemById("unregistered"); //if no registered user, add items to public list
 		}
 
 		//===================================================================
@@ -36,7 +37,11 @@ angular.module('myApp.controllers', [
 
 		//method that adds items to the items array
 		$scope.addItem = function() {
-			itemService.addItem($scope.newItem, $rootScope.currentUser); //uses itemService to add items to firebase
+			if ($rootScope.currentUser) {
+				itemService.addItem($scope.newItem, $rootScope.currentUser); //uses itemService to add items to firebase
+			} else {
+				itemService.addItem($scope.newItem, "unregistered"); //this adds items to public itemlist
+			}
 			//clears the textfields
 			$scope.newItem = {
 				name: "",
@@ -58,6 +63,11 @@ angular.module('myApp.controllers', [
 		$scope.selectAll = function() {
 			itemService.selectAll($scope.items); //uses the itemsService to toggle select all items
 		};
+		//hides the selectAll button and deleteSelected button if there is no items
+		$scope.hideSelect = function(){
+			var hide = itemService.hideSelect($scope.items);
+			return hide;
+		}
 
 
 	}])
