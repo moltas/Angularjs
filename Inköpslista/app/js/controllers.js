@@ -64,7 +64,7 @@ angular.module('myApp.controllers', [
 			itemService.selectAll($scope.items); //uses the itemsService to toggle select all items
 		};
 		//hides the selectAll button and deleteSelected button if there is no items
-		$scope.hideSelect = function(){
+		$scope.hideSelect = function() {
 			var hide = itemService.hideSelect($scope.items);
 			return hide;
 		}

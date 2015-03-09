@@ -12,20 +12,20 @@ angular.module("myApp.services", [])
 	//Service that is used to set and get email from user
 	// .factory("userService", function() {  
 
-	// 	var user = { email: "" };
+// 	var user = { email: "" };
 
-	// 	var userObject = {
-	// 		setUserEmail: function(email) {
-	// 			user.email = email;
-	// 		},
-	// 		getUserEmail: function() {
-	// 			return user;
-	// 		}
-	// 	}
-	// 	return userObject;
-	// })
+// 	var userObject = {
+// 		setUserEmail: function(email) {
+// 			user.email = email;
+// 		},
+// 		getUserEmail: function() {
+// 			return user;
+// 		}
+// 	}
+// 	return userObject;
+// })
 
-	//service that is used to manage items
+//service that is used to manage items
 	.factory("itemService", function(dataService, $firebase) {
 
 		var users = dataService.child("users");
@@ -69,10 +69,10 @@ angular.module("myApp.services", [])
 					}
 				});
 			},
-			hideSelect: function(collection){
-				if(collection.length === 0){
+			hideSelect: function(collection) {
+				if (collection.length === 0) {
 					return true;
-				}else{
+				} else {
 					return false;
 				}
 			},
@@ -106,7 +106,7 @@ angular.module("myApp.services", [])
 						console.log("Login failed", error);
 					} else {
 						$location.path("/landing_page");
-						if(!$rootScope.$$phase) $rootScope.$apply(); //a fix I found that stopped me from havign to double click to go to the landing page
+						if (!$rootScope.$$phase) $rootScope.$apply(); //a fix I found that stopped me from havign to double click to go to the landing page
 					}
 				});
 			},
